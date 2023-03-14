@@ -1,13 +1,12 @@
+import { TOTALCHARS } from "@/constants";
+import useAddPost from "@/hooks/addPost.hook";
 import React, { ChangeEvent, useState } from "react";
 type Props = {};
 export const CreatePost: React.FC<Props> = () => {
-  const [title, setTitle] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
-  const handleChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    setTitle(evt.target.value);
-  };
+  const { handleSubmit, handleChange, title, isDisabled } = useAddPost();
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col my-4">
         <textarea
           name="title"
@@ -18,7 +17,14 @@ export const CreatePost: React.FC<Props> = () => {
           onChange={handleChange}
         ></textarea>
       </div>
-      <div>
+      <div className={`flex items-center justify-between gap-3`}>
+        <p
+          className={`font-bold text-sm ${
+            title.length > TOTALCHARS ? "text-red-700" : "text-gray-700"
+          }`}
+        >
+          {title.length} / {TOTALCHARS}
+        </p>
         <button
           type="submit"
           disabled={isDisabled}
