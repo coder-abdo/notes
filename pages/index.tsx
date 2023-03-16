@@ -1,5 +1,6 @@
-import { CreatePost } from "@/components/posts/createPost";
 import Head from "next/head";
+import { CreatePost } from "@/components/posts/createPost";
+import Posts from "@/components/posts";
 export default function Home() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
       <main>notes app here</main>
       <CreatePost />
+      <Posts />
     </>
   );
 }
