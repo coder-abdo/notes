@@ -1,3 +1,4 @@
+import UserPosts from "@/components/posts/userPosts.component";
 import { useSession } from "next-auth/react";
 export default function Dashboard() {
   const { data, status } = useSession();
@@ -14,6 +15,7 @@ export default function Dashboard() {
   return (
     <main>
       <h1 className="text-2xl font-bold">welcome back {data?.user?.name}🔥 </h1>
+      <UserPosts />
     </main>
   );
 }

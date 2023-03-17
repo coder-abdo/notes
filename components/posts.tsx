@@ -2,7 +2,7 @@ import PostItem from "./posts/post";
 import { usePosts } from "@/hooks/getPosts.hook";
 import { Suspense } from "react";
 export default function Posts() {
-  const { data: posts, isLoading, error } = usePosts();
+  const { data: posts, error } = usePosts();
   if (error instanceof Error) {
     return (
       <div className="text-red-700 font-bold text-lg">{error.message}</div>
@@ -15,7 +15,7 @@ export default function Posts() {
       }
     >
       {posts?.map((post) => (
-        <PostItem key={post.id} post={post}></PostItem>
+        <PostItem key={post.id} post={post} />
       ))}
     </Suspense>
   );

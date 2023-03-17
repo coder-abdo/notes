@@ -1,9 +1,10 @@
 import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, QueryClient } from "react-query";
 
 export default function useAddPost() {
+  const queryClient = new QueryClient();
   let toastId: string;
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -22,6 +23,7 @@ export default function useAddPost() {
       },
       onSuccess: (data) => {
         toast.success("post has been made 🔥", { id: toastId });
+        queryClient.invalidateQueries(["posts"]);
         setTitle("");
         setIsDisabled(false);
       },

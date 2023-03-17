@@ -1,0 +1,30 @@
+type Props = {
+  handleToggle: (toggle: boolean) => void;
+  handleDelete: (id: string) => void;
+};
+export default function Toggle({ handleToggle, handleDelete }: Props) {
+  return (
+    <div className="fixed bg-black/50 w-full h-full z-20 left-0 top-0">
+      <span
+        className="absolute text-sm cursor-pointer right-1 top-1"
+        onClick={() => handleToggle(false)}
+      >
+        &close;
+      </span>
+      <div className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-12 rounded-lg flex flex-col gap-6">
+        <h2 className="text-xl">
+          Are you sure you want to delete this post?🥲
+        </h2>
+        <h3 className="text-red-700 text-sm">
+          Pressing that button will delete this post permenantly
+        </h3>
+        <button
+          className="bg-red-600 text-sm text-white py-2 px-4 rounded-lg"
+          onClick={handleDelete}
+        >
+          Delete Post
+        </button>
+      </div>
+    </div>
+  );
+}
