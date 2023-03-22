@@ -6,7 +6,9 @@ export default function useDeletePost() {
   const queryClient = new QueryClient();
   let deleteToastId: string;
   const deletePost = async (id: string) => {
-    const { data } = axios.delete("/api/posts/deletePost", { data: { id } });
+    const { data }: any = axios.delete("/api/posts/deletePost", {
+      data: { id },
+    });
     console.log(data);
     return data;
   };
