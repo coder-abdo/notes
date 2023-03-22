@@ -26,8 +26,11 @@ export default function PostItem({ post, userPost }: Props) {
             width={32}
             height={32}
             priority
+            className="rounded-full"
           />
-          <h3 className="font-bold text-gray-700">{post.user.name}</h3>
+          <h3 className="font-bold text-gray-700 capitalize">
+            {post.user.name}
+          </h3>
         </div>
         <div className="my-8">
           <p className="break-all">{post.title}</p>
