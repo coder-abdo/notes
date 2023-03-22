@@ -1,6 +1,6 @@
 type Props = {
   handleToggle: (toggle: boolean) => void;
-  handleDelete: (id: string) => void | any;
+  handleDelete: any;
 };
 export default function Toggle({ handleToggle, handleDelete }: Props) {
   return (
